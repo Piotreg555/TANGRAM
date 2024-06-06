@@ -10,6 +10,7 @@ Tan::Tan()
 void Tan::addPoints(wxPoint p1, wxPoint p2, wxPoint p3)
 {
 	nOfVertices = 3;
+	if (vertices != nullptr) delete[] vertices;
 	vertices = new wxPoint[nOfVertices];
 	vertices[0] = p1;
 	vertices[1] = p2;
@@ -19,6 +20,7 @@ void Tan::addPoints(wxPoint p1, wxPoint p2, wxPoint p3)
 void Tan::addPoints(wxPoint p1, wxPoint p2, wxPoint p3, wxPoint p4)
 {
 	nOfVertices = 4;
+	if (vertices != nullptr) delete[] vertices;
 	vertices = new wxPoint[nOfVertices];
 	vertices[0] = p1;
 	vertices[1] = p2;
@@ -54,11 +56,12 @@ void Tan::drawInWorkspace(wxDC* dc, wxPoint MousePosition, int scale, bool QPres
 
 	for (int i = 0; i < nOfVertices; i++)
 	{
-		rotate(vertices[i], angle);
-		vertices[i].x += tileOffset.x;
-		vertices[i].y += tileOffset.y;
-		vertices[i].x *= scale * workspaceWidth / 721;
-		vertices[i].y *= scale * workspaceHeight / 519;
+		
+		if(isHeld) rotate(vertices[i], angle);
+		vertices[i].x += isHeld ? tileOffset.x : 0;
+		vertices[i].y += isHeld ? tileOffset.y : 0;
+		//vertices[i].x *= scale * workspaceWidth / 721;
+		//vertices[i].y *= scale * workspaceHeight / 519;
 		if (isHeld)
 		{
 			if (QPressed)

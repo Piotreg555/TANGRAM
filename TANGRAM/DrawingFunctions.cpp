@@ -71,7 +71,7 @@ void GUIMyFrame1::pickUp()
 		{
 			tan->isHeld = true;
 			isAnyTanHeld = true;
-			break;
+			//break;
 		}
 		else
 			tan->isHeld = false;

@@ -9,7 +9,6 @@ GUIMyFrame1::GUIMyFrame1(wxWindow* parent): MyFrame1(parent)
 
 void GUIMyFrame1::MyFrame1OnUpdateUI(wxUpdateUIEvent& event)
 {
-	setTray();
 }
 
 void GUIMyFrame1::panelWorkspaceOnKeyDown(wxKeyEvent& event)
