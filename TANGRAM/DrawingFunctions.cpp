@@ -77,7 +77,7 @@ void GUIMyFrame1::pickUp()
 			tan->isHeld = false;
 	}
 }
-
+//test
 void GUIMyFrame1::DrawTray()
 {
 	wxClientDC dc1(panelTray);
