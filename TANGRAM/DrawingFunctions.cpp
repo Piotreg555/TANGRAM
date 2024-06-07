@@ -71,13 +71,13 @@ void GUIMyFrame1::pickUp()
 		{
 			tan->isHeld = true;
 			isAnyTanHeld = true;
-			//break;
+			break;
 		}
 		else
 			tan->isHeld = false;
 	}
 }
-//test remove
+
 void GUIMyFrame1::DrawTray()
 {
 	wxClientDC dc1(panelTray);

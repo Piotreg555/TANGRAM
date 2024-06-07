@@ -6,7 +6,7 @@
 
 class Tan {
 public:
-	int workspaceWidth, workspaceHeight;
+	static int workspaceWidth, workspaceHeight;
 	double angle = 0;
 	wxPoint* vertices = nullptr; //alokowana dynamicznie tablica - przechowuje wierzcho�ki
 	wxPoint tileOffset = wxPoint(0, 0);
@@ -31,7 +31,7 @@ public:
 	/**@brief Sprawdza czy mysz znajduje sie nad plytka
 	* @param[in] mousePosition - pozycja myszy w danym kontek�cie rysunkowym*/
 	bool checkMousePosition(wxPoint mousePosition);
-	void rotate(wxPoint& point, double angle);
+	void rotate(wxPoint* vertices, int nOfVertices ,double angle);
 	/**@brief Destruktor - usuwa dynamicznie zaalokowane vertices*/
 	~Tan();
 

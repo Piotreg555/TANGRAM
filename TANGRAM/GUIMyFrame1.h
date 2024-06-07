@@ -53,8 +53,8 @@ class GUIMyFrame1 : public MyFrame1
 	wxPoint MousePositionInTray;
 	wxPoint MousePositionInWorkspace;
 	bool MouseClicked;
-	bool QPressed = false, EPressed = false;
 	wxPoint tileOffset = wxPoint(0, 0);
+	static bool QPressed, EPressed;
 	static bool isAnyTanHeld;
 
 
