@@ -28,7 +28,7 @@ void Tan::addPoints(wxPoint p1, wxPoint p2, wxPoint p3, wxPoint p4)
 	vertices[3] = p4;
 }
 
-void Tan::rotate(wxPoint* vertices, int nOfVertices, double angle)
+void Tan::rotate(double angle)
 {
 	// x = xcos - ysin
 	// y = xsin + ycos
@@ -59,13 +59,14 @@ void Tan::drawInWorkspace(wxDC* dc, wxPoint MousePosition, int scale, bool QPres
 
 	if (isHeld)
 	{
-		tileOffset.x -= centerOfMass.x;
-		tileOffset.y -= centerOfMass.y;
 		if (GUIMyFrame1::QPressed)
 			angle = -1;
 		if (GUIMyFrame1::EPressed)
 			angle = 1;
-		rotate(vertices, nOfVertices, angle);
+		rotate(angle);
+
+		tileOffset.x -= centerOfMass.x;
+		tileOffset.y -= centerOfMass.y;
 		for (int i = 0; i < nOfVertices; i++)
 		{
 			//vertices[i].x *= scale * workspaceWidth / 721;

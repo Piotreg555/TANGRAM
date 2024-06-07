@@ -31,7 +31,7 @@ public:
 	/**@brief Sprawdza czy mysz znajduje sie nad plytka
 	* @param[in] mousePosition - pozycja myszy w danym kontek�cie rysunkowym*/
 	bool checkMousePosition(wxPoint mousePosition);
-	void rotate(wxPoint* vertices, int nOfVertices ,double angle);
+	void rotate(double angle);
 	/**@brief Destruktor - usuwa dynamicznie zaalokowane vertices*/
 	~Tan();
 
