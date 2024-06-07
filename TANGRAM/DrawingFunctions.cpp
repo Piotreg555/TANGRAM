@@ -3,38 +3,38 @@
 void GUIMyFrame1::setTray()
 {
 
-	int w = panelTray->GetSize().x;
-	int h = -panelTray->GetSize().y;
+	//int w = panelTray->GetSize().x;
+	int h = panelTray->GetSize().y;
 	tan1.addPoints(
-		wxPoint(-w / 3, h / 3),
-		wxPoint(-w / 3, -h / 3),
+		wxPoint(-h / 3, h / 3),
+		wxPoint(-h / 3, -h / 3),
 		wxPoint(0, 0));
 	tan2.addPoints(
-		wxPoint(-w / 3, h / 3),
-		wxPoint(w / 3, h / 3),
+		wxPoint(-h / 3, -h / 3),
+		wxPoint(h / 3, -h / 3),
 		wxPoint(0, 0));
 	tan3.addPoints(
 		wxPoint(0, 0),
-		wxPoint(w / 6, -h / 6),
-		wxPoint(w / 6, h / 6));
+		wxPoint(h / 6, h / 6),
+		wxPoint(h / 6, -h / 6));
 	tan4.addPoints(
-		wxPoint(w / 6, -h / 6),
-		wxPoint(w / 3, 0),
-		wxPoint(w / 3, h / 3),
-		wxPoint(w / 6, h / 6));
+		wxPoint(h / 6, h / 6),
+		wxPoint(h / 3, 0),
+		wxPoint(h / 3, -h / 3),
+		wxPoint(h / 6, -h / 6));
 	tan5.addPoints(
-		wxPoint(0, -h / 3),
-		wxPoint(w / 3, -h / 3),
-		wxPoint(w / 3, 0));
+		wxPoint(0, h / 3),
+		wxPoint(h / 3, h / 3),
+		wxPoint(h / 3, 0));
 	tan6.addPoints(
-		wxPoint(0, -h / 3),
-		wxPoint(w / 6, -h / 6),
+		wxPoint(0, h / 3),
+		wxPoint(h / 6, h / 6),
 		wxPoint(0, 0),
-		wxPoint(-w / 6, -h / 6));
+		wxPoint(-h / 6, h / 6));
 	tan7.addPoints(
-		wxPoint(-w / 3, -h / 3),
-		wxPoint(0, -h / 3),
-		wxPoint(-w / 6, -h / 6));
+		wxPoint(-h / 3, h / 3),
+		wxPoint(0, h / 3),
+		wxPoint(-h / 6, h / 6));
 	TanTiles.clear();
 	TanTiles.insert(TanTiles.end(), { &tan1, &tan2, &tan3, &tan4, &tan5, &tan6, &tan7 });
 }
