@@ -59,7 +59,7 @@ void GUIMyFrame1::DrawWorkspace()
 		else
 			dc.SetBrush((wxBrush(wxColor(200, 200, 200))));
 		if (!tan->visibleInTray)
-			tan->drawInWorkspace(&dc, tan->tileOffset, 1, QPressed, EPressed);
+			tan->drawInWorkspace(&dc, tan->tileOffset, 1);
 	}
 }
 

@@ -7,8 +7,9 @@
 class Tan {
 public:
 	static int workspaceWidth, workspaceHeight;
-	double angle = 0;
+	double angle;
 	wxPoint* vertices = nullptr; //alokowana dynamicznie tablica - przechowuje wierzcho�ki
+	wxPoint rotatedVertices[4];
 	wxPoint tileOffset = wxPoint(0, 0);
 	wxPoint centerOfMass = wxPoint(0,0);
 	int nOfVertices; //liczba wierzcho�k�w
@@ -27,11 +28,11 @@ public:
 	* @param[in] origin - offset
 	* @param[in] scale - skala*/
 	void drawInTray(wxDC* dc, wxPoint origin, int scale);
-	void drawInWorkspace(wxDC* dc, wxPoint origin, int scale, bool QPressed, bool EPressed);
+	void drawInWorkspace(wxDC* dc, wxPoint origin, int scale);
 	/**@brief Sprawdza czy mysz znajduje sie nad plytka
 	* @param[in] mousePosition - pozycja myszy w danym kontek�cie rysunkowym*/
 	bool checkMousePosition(wxPoint mousePosition);
-	void rotate(double angle);
+	void rotate();
 	/**@brief Destruktor - usuwa dynamicznie zaalokowane vertices*/
 	~Tan();
 

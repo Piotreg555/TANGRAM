@@ -55,7 +55,7 @@ void GUIMyFrame1::panelWorkspaceOnRightDown(wxMouseEvent& event)
 			tan->visibleInTray = true;
 			tan->isHeld = false;
 			tan->tileOffset = wxPoint(0, 0);
-			tan->angle = 0;
+			tan->angle = 0.;
 		}
 	}
 }
@@ -96,7 +96,7 @@ void GUIMyFrame1::buttonClearOnButtonClick(wxCommandEvent& event)
 		tan->visibleInTray = true;
 		tan->isHeld = false;
 		tan->tileOffset = wxPoint(0, 0);
-		tan->angle = 0;
+		tan->angle = 0.;
 	}
 	setTray();
 	DrawTray();

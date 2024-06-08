@@ -5,6 +5,7 @@ Tan::Tan()
 {
 	visibleInTray = true;
 	isHeld = false;
+	angle = 0.;
 }
 
 void Tan::addPoints(wxPoint p1, wxPoint p2, wxPoint p3)
@@ -28,42 +29,46 @@ void Tan::addPoints(wxPoint p1, wxPoint p2, wxPoint p3, wxPoint p4)
 	vertices[3] = p4;
 }
 
-void Tan::rotate(double angle)
+void Tan::rotate()
 {
 	// x = xcos - ysin
 	// y = xsin + ycos
-	angle *= M_PI / 180;
+	double RadAngle = angle * M_PI / 180;
 	for (int i = 0; i < nOfVertices; i++)
 	{
-		int tempx = vertices[i].x - centerOfMass.x;
-		int tempy = vertices[i].y - centerOfMass.y;
 
-		vertices[i].x = tempx * cos(angle) - tempy * sin(angle) + centerOfMass.x;
-		vertices[i].y = tempx * sin(angle) + tempy * cos(angle) + centerOfMass.y;
+		int tempx = rotatedVertices[i].x - centerOfMass.x;
+		int tempy = rotatedVertices[i].y - centerOfMass.y;
+
+		rotatedVertices[i].x = tempx * cos(RadAngle) - tempy * sin(RadAngle) + centerOfMass.x;
+		rotatedVertices[i].y = tempx * sin(RadAngle) + tempy * cos(RadAngle) + centerOfMass.y;
 	}
-
 }
 
-void Tan::drawInWorkspace(wxDC* dc, wxPoint MousePosition, int scale, bool QPressed, bool EPressed)
+void Tan::drawInWorkspace(wxDC* dc, wxPoint MousePosition, int scale)
 {
-	angle = 0;
 	centerOfMass = wxPoint(0, 0);
 	for (int i = 0; i < nOfVertices; i++)
 	{
 		centerOfMass.x += vertices[i].x;
 		centerOfMass.y += vertices[i].y;
+
+		rotatedVertices[i].x = vertices[i].x;
+		rotatedVertices[i].y = vertices[i].y;
 	}
 	centerOfMass.x /= nOfVertices;
 	centerOfMass.y /= nOfVertices;
 
 
+	if (GUIMyFrame1::QPressed && isHeld)
+		angle += -0.5;
+	if (GUIMyFrame1::EPressed && isHeld)
+		angle += 0.5;
+	rotate();
 	if (isHeld)
 	{
-		if (GUIMyFrame1::QPressed)
-			angle = -1;
-		if (GUIMyFrame1::EPressed)
-			angle = 1;
-		rotate(angle);
+		
+		
 
 		tileOffset.x -= centerOfMass.x;
 		tileOffset.y -= centerOfMass.y;
@@ -73,12 +78,17 @@ void Tan::drawInWorkspace(wxDC* dc, wxPoint MousePosition, int scale, bool QPres
 			//vertices[i].y *= scale * workspaceHeight / 577;
 			vertices[i].x += tileOffset.x;
 			vertices[i].y += tileOffset.y;
+
+			rotatedVertices[i].x += tileOffset.x;
+			rotatedVertices[i].y += tileOffset.y;
+
 		}
 	}
-	region = wxRegion(nOfVertices, vertices);
-	dc->DrawPolygon(nOfVertices, vertices);
+	region = wxRegion(nOfVertices, rotatedVertices);
+	dc->DrawPolygon(nOfVertices, rotatedVertices);
 	dc->SetBrush(wxBrush(wxColor(255, 0, 0)));
 	dc->DrawCircle(centerOfMass, 5);
+	dc->DrawText(std::to_string(angle), centerOfMass);
 }
 
 void Tan::drawInTray(wxDC* dc, wxPoint MousePosition, int scale)
