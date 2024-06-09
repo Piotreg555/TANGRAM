@@ -36,10 +36,10 @@ void GUIMyFrame1::panelWorkspaceOnMouseEvents(wxMouseEvent& event)
 {
 	MousePositionInWorkspace = wxPoint(event.m_x - Tan::workspaceWidth / 2, event.m_y - Tan::workspaceHeight / 2);
 	if (event.LeftIsDown())
-		MouseClicked = true;
+		MouseClickedInWorkspace = true;
 	else
 	{
-		MouseClicked = false;
+		MouseClickedInWorkspace = false;
 		isAnyTanHeld = false;
 	}
 	if (!isAnyTanHeld)
@@ -169,9 +169,9 @@ void GUIMyFrame1::panelTrayOnMouseEvents(wxMouseEvent& event)
 {
 	MousePositionInTray = wxPoint(event.m_x - panelTray->GetSize().x / 2, event.m_y - panelTray->GetSize().y / 2);
 	if (event.LeftIsDown())
-		MouseClicked = true;
+		MouseClickedInTray = true;
 	else
-		MouseClicked = false;
+		MouseClickedInTray = false;
 }
 
 void GUIMyFrame1::panelTrayOnRightDown(wxMouseEvent& event)
@@ -182,6 +182,6 @@ void GUIMyFrame1::panelTrayOnRightDown(wxMouseEvent& event)
 void GUIMyFrame1::panelTrayOnUpdateUI(wxUpdateUIEvent& event)
 {
 	// this->SetTitle("mouse position in workspace" + std::to_string(MousePositionInWorkspace.x) + " " + std::to_string(MousePositionInWorkspace.y));
-	this->SetTitle(std::to_string(GUIMyFrame1::QPressed) + ", " + std::to_string(GUIMyFrame1::EPressed));
+	//this->SetTitle(std::to_string(GUIMyFrame1::QPressed) + ", " + std::to_string(GUIMyFrame1::EPressed));
 	DrawTray();
 }

@@ -59,17 +59,14 @@ void Tan::drawInWorkspace(wxDC* dc, wxPoint MousePosition, int scale)
 	centerOfMass.x /= nOfVertices;
 	centerOfMass.y /= nOfVertices;
 
-
 	if (GUIMyFrame1::QPressed && isHeld)
 		angle += -0.5;
 	if (GUIMyFrame1::EPressed && isHeld)
 		angle += 0.5;
 	rotate();
+
 	if (isHeld)
 	{
-		
-		
-
 		tileOffset.x -= centerOfMass.x;
 		tileOffset.y -= centerOfMass.y;
 		for (int i = 0; i < nOfVertices; i++)
@@ -115,5 +112,5 @@ bool Tan::checkMousePosition(wxPoint mousePosition)
 
 Tan::~Tan()
 {
-	delete vertices;
+	delete[] vertices;
 }

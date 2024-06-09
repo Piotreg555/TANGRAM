@@ -12,7 +12,7 @@ public:
 	wxPoint rotatedVertices[4];
 	wxPoint tileOffset = wxPoint(0, 0);
 	wxPoint centerOfMass = wxPoint(0,0);
-	int nOfVertices; //liczba wierzcho�k�w
+	int nOfVertices = 0; //liczba wierzcho�k�w
 	bool visibleInTray = true; //Czy tan jest widoczny w zasobniku? Je�eli nie, to jest widoczny w obszarze roboczym
 	bool isHeld = false;
 	wxRegion region; //Pokrywa si� z p�ytk� - u�ywany do sprawdzania czy p�ytka zosta�a klikni�ta

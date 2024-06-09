@@ -52,7 +52,8 @@ class GUIMyFrame1 : public MyFrame1
 	std::vector<Tan*> TanTiles;
 	wxPoint MousePositionInTray;
 	wxPoint MousePositionInWorkspace;
-	bool MouseClicked;
+	bool MouseClickedInWorkspace;
+	bool MouseClickedInTray;
 	wxPoint tileOffset = wxPoint(0, 0);
 	static bool QPressed, EPressed;
 	static bool isAnyTanHeld;

@@ -67,7 +67,7 @@ void GUIMyFrame1::pickUp()
 {
 	for (Tan* tan : TanTiles)
 	{
-		if (tan->checkMousePosition(MousePositionInWorkspace) && MouseClicked)
+		if (tan->checkMousePosition(MousePositionInWorkspace) && MouseClickedInWorkspace)
 		{
 			tan->isHeld = true;
 			isAnyTanHeld = true;
@@ -90,7 +90,7 @@ void GUIMyFrame1::DrawTray()
 
 	for (Tan* tan : TanTiles)
 	{
-		if (tan->checkMousePosition(MousePositionInTray) && MouseClicked)
+		if (tan->checkMousePosition(MousePositionInTray) && MouseClickedInTray)
 		{
 			tan->visibleInTray = false;
 		}
