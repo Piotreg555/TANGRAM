@@ -10,6 +10,9 @@ int Tan::workspaceHeight = 577;
 GUIMyFrame1::GUIMyFrame1(wxWindow* parent): MyFrame1(parent)
 {
 	setTray();
+	for (int i = 0; i < 7; i++) {
+		TanTiles[i]->number = i + 1;
+	}
 }
 
 void GUIMyFrame1::MyFrame1OnUpdateUI(wxUpdateUIEvent& event)
@@ -48,6 +51,7 @@ void GUIMyFrame1::panelWorkspaceOnMouseEvents(wxMouseEvent& event)
 
 void GUIMyFrame1::panelWorkspaceOnRightDown(wxMouseEvent& event)
 {
+	int h = panelTray->GetSize().y;
 	for (Tan* tan : TanTiles)
 	{
 		if (tan->checkMousePosition(MousePositionInWorkspace))
@@ -56,6 +60,32 @@ void GUIMyFrame1::panelWorkspaceOnRightDown(wxMouseEvent& event)
 			tan->isHeld = false;
 			tan->tileOffset = wxPoint(0, 0);
 			tan->angle = 0.;
+			switch (tan->number)
+			{
+			case 1:
+				tan->addPoints(wxPoint(-h / 3, h / 3), wxPoint(-h / 3, -h / 3), wxPoint(0, 0));
+				break;
+			case 2:
+				tan->addPoints(wxPoint(-h / 3, -h / 3), wxPoint(h / 3, -h / 3), wxPoint(0, 0));
+				break;
+			case 3:
+				tan->addPoints(wxPoint(0, 0), wxPoint(h / 6, h / 6), wxPoint(h / 6, -h / 6));
+				break;
+			case 4:
+				tan->addPoints(wxPoint(h / 6, h / 6), wxPoint(h / 3, 0), wxPoint(h / 3, -h / 3), wxPoint(h / 6, -h / 6));
+				break;
+			case 5:
+				tan->addPoints(wxPoint(0, h / 3), wxPoint(h / 3, h / 3), wxPoint(h / 3, 0));
+				break;
+			case 6:
+				tan->addPoints(wxPoint(0, h / 3), wxPoint(h / 6, h / 6), wxPoint(0, 0), wxPoint(-h / 6, h / 6));
+				break;
+			case 7:
+				tan->addPoints(wxPoint(-h / 3, h / 3), wxPoint(0, h / 3), wxPoint(-h / 6, h / 6));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }

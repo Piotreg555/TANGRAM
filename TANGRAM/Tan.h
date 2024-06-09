@@ -7,6 +7,7 @@
 class Tan {
 public:
 	static int workspaceWidth, workspaceHeight;
+	int number;
 	double angle;
 	wxPoint* vertices = nullptr; //alokowana dynamicznie tablica - przechowuje wierzcho�ki
 	wxPoint rotatedVertices[4];
