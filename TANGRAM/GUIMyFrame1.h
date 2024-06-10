@@ -76,6 +76,7 @@ class GUIMyFrame1 : public MyFrame1
 	* - ustawia wxPen i wxBrush, ustawia origin na �rodek obszaru roboczego, dla ka�dego tana sprawdza czy zosta� klikni�ty i ustawia offset
 	*/
 	void DrawWorkspace();
+	void DrawImage();
 	void pickUp();
 
 
