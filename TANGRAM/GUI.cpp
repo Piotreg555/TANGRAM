@@ -50,6 +50,9 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	buttonNew = new wxButton( this, wxID_ANY, wxT("Nowy obrazek"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer11->Add( buttonNew, 1, wxALL, 5 );
 
+	buttonSolve = new wxButton( this, wxID_ANY, wxT("Rozwiazanie"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer11->Add( buttonSolve, 0, wxALL, 5 );
+
 
 	bSizer9->Add( bSizer11, 0, wxEXPAND, 5 );
 
@@ -109,6 +112,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	buttonNew->Connect( wxEVT_KEY_DOWN, wxKeyEventHandler( MyFrame1::buttonNewOnKeyDown ), NULL, this );
 	buttonNew->Connect( wxEVT_KEY_UP, wxKeyEventHandler( MyFrame1::buttonNewOnKeyUp ), NULL, this );
 	buttonNew->Connect( wxEVT_RIGHT_DOWN, wxMouseEventHandler( MyFrame1::buttonNewOnRightDown ), NULL, this );
+	buttonSolve->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::buttonSolveOnButtonClick ), NULL, this );
 	panelTray->Connect( wxEVT_KEY_DOWN, wxKeyEventHandler( MyFrame1::panelTrayOnKeyDown ), NULL, this );
 	panelTray->Connect( wxEVT_KEY_UP, wxKeyEventHandler( MyFrame1::panelTrayOnKeyUp ), NULL, this );
 	panelTray->Connect( wxEVT_LEFT_DOWN, wxMouseEventHandler( MyFrame1::panelTrayOnMouseEvents ), NULL, this );
@@ -172,6 +176,7 @@ MyFrame1::~MyFrame1()
 	buttonNew->Disconnect( wxEVT_KEY_DOWN, wxKeyEventHandler( MyFrame1::buttonNewOnKeyDown ), NULL, this );
 	buttonNew->Disconnect( wxEVT_KEY_UP, wxKeyEventHandler( MyFrame1::buttonNewOnKeyUp ), NULL, this );
 	buttonNew->Disconnect( wxEVT_RIGHT_DOWN, wxMouseEventHandler( MyFrame1::buttonNewOnRightDown ), NULL, this );
+	buttonSolve->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::buttonSolveOnButtonClick ), NULL, this );
 	panelTray->Disconnect( wxEVT_KEY_DOWN, wxKeyEventHandler( MyFrame1::panelTrayOnKeyDown ), NULL, this );
 	panelTray->Disconnect( wxEVT_KEY_UP, wxKeyEventHandler( MyFrame1::panelTrayOnKeyUp ), NULL, this );
 	panelTray->Disconnect( wxEVT_LEFT_DOWN, wxMouseEventHandler( MyFrame1::panelTrayOnMouseEvents ), NULL, this );

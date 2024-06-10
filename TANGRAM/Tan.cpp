@@ -84,8 +84,8 @@ void Tan::drawInWorkspace(wxDC* dc, wxPoint MousePosition, int scale)
 	region = wxRegion(nOfVertices, rotatedVertices);
 	dc->DrawPolygon(nOfVertices, rotatedVertices);
 	dc->SetBrush(wxBrush(wxColor(255, 0, 0)));
-	dc->DrawCircle(centerOfMass, 5);
-	dc->DrawText(std::to_string(angle), centerOfMass);
+	//dc->DrawCircle(centerOfMass, 5);
+	//dc->DrawText(std::to_string(angle), centerOfMass);
 }
 
 void Tan::drawInTray(wxDC* dc, wxPoint MousePosition, int scale)

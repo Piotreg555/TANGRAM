@@ -1,4 +1,5 @@
 #include "GUIMyFrame1.h"
+#include <ctime>
 
 void GUIMyFrame1::setTray()
 {
@@ -102,8 +103,9 @@ void GUIMyFrame1::DrawTray()
 void cat(wxDC* dc, int height) {
 	int w = height;
 	int h = -height;
-	int scaleX = w / 3;
-	int scaleY =h / 3;
+	int scaleX = w / 3 *1.2;
+	int scaleY =h / 3 *1.2;
+	wxPoint offset = wxPoint(-w / 6, -1.8*h / 5);
 	wxPoint t1[3] = {
 		wxPoint(0, 0), 
 		wxPoint((sqrt(2)/2)* scaleX, 0),
@@ -141,28 +143,36 @@ void cat(wxDC* dc, int height) {
 		wxPoint((4 * sqrt(2) - 7) / 8 * scaleX, (4 * sqrt(2) + 9) / 8 * scaleY),
 		wxPoint((4 * sqrt(2) - 7) / 8 * scaleX, (4 * sqrt(2) + 5) / 8 * scaleY)
 	};
-	dc->DrawPolygon(3, t1);
-	dc->DrawPolygon(3, t2);
-	dc->DrawPolygon(3, t3);
-	dc->DrawPolygon(4, t4);
-	dc->DrawPolygon(3, t5);
-	dc->DrawPolygon(4, t6);
-	dc->DrawPolygon(3, t7);
-	/*std::vector<wxPoint*> Tiles;
-	Tiles.clear();
-	Tiles.insert(Tiles.end(), { t1, t2, t3, t4, t5, t6, t7 });
-	for (wxPoint* tile : Tiles) dc->DrawPolygon(sizeof(tile), tile);*/
+	dc->DrawPolygon(3, t1, offset.x, offset.y);
+	dc->DrawPolygon(3, t2, offset.x, offset.y);
+	dc->DrawPolygon(3, t3, offset.x, offset.y);
+	dc->DrawPolygon(4, t4, offset.x, offset.y);
+	dc->DrawPolygon(3, t5, offset.x, offset.y);
+	dc->DrawPolygon(4, t6, offset.x, offset.y);
+	dc->DrawPolygon(3, t7, offset.x, offset.y);
 }
 
 void GUIMyFrame1::DrawImage() {
 	wxClientDC dc1(panelImage);
 	wxBufferedDC dc(&dc1);
 	dc.SetBackground(wxColor(255, 255, 255));
-	dc.SetBrush((wxBrush(wxColor(200, 200, 200))));
 	dc.SetPen((wxPen(wxColor(0, 0, 0))));
 	dc.Clear();
-	dc.SetDeviceOrigin(panelImage->GetSize().x / 2, 5*panelImage->GetSize().y/7);
+	dc.SetDeviceOrigin(panelImage->GetSize().x / 2, panelImage->GetSize().y/2);
 	//dc.DrawCircle(wxPoint(0,0), 5);
 
-	cat(&dc, panelImage->GetSize().y);
+	void (*shapes[1])(wxDC * dc, int height) = { cat };
+	int random_number=0;
+
+	if (showSolution) {
+		dc.SetBrush((wxBrush(wxColor(200, 200, 200))));
+		shapes[random_number-1](&dc, panelImage->GetSize().y);
+	}
+	else {
+		dc.SetBrush((wxBrush(wxColor(0, 0, 0))));
+		std::srand(std::time(0));
+		random_number = std::rand() % 1;// (sizeof(shapes) / sizeof(shapes[0]));
+		shapes[random_number-1](&dc, panelImage->GetSize().y);
+	}
+	//cat(&dc, panelImage->GetSize().y);
 }

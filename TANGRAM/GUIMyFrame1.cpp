@@ -1,13 +1,8 @@
 #include "GUIMyFrame1.h"
 
-bool GUIMyFrame1::isAnyTanHeld = false;
-bool GUIMyFrame1::QPressed = false;
-bool GUIMyFrame1::EPressed = false;
-int Tan::workspaceWidth = 721;
-int Tan::workspaceHeight = 577;
-
-
-GUIMyFrame1::GUIMyFrame1(wxWindow* parent): MyFrame1(parent)
+GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
+	:
+	MyFrame1(parent)
 {
 	setTray();
 	for (int i = 0; i < 7; i++) {
@@ -17,7 +12,7 @@ GUIMyFrame1::GUIMyFrame1(wxWindow* parent): MyFrame1(parent)
 
 void GUIMyFrame1::MyFrame1OnUpdateUI(wxUpdateUIEvent& event)
 {
-	DrawImage();
+	
 
 }
 
@@ -157,6 +152,7 @@ void GUIMyFrame1::buttonClearOnRightDown(wxMouseEvent& event)
 
 void GUIMyFrame1::buttonNewOnButtonClick(wxCommandEvent& event)
 {
+	showSolution = false;
 	DrawImage();
 }
 
@@ -175,11 +171,17 @@ void GUIMyFrame1::buttonNewOnKeyUp(wxKeyEvent& event)
 	if (event.GetKeyCode() == 81)
 		GUIMyFrame1::QPressed = false;
 }
+void GUIMyFrame1::buttonSolveOnButtonClick(wxCommandEvent& event) {
+	showSolution = true;
+	DrawImage();
+}
 
 void GUIMyFrame1::buttonNewOnRightDown(wxMouseEvent& event)
 {
 	// TODO: Implement buttonNewOnRightDown
 }
+
+
 
 void GUIMyFrame1::panelTrayOnKeyDown(wxKeyEvent& event)
 {
@@ -217,3 +219,12 @@ void GUIMyFrame1::panelTrayOnUpdateUI(wxUpdateUIEvent& event)
 	//this->SetTitle(std::to_string(GUIMyFrame1::QPressed) + ", " + std::to_string(GUIMyFrame1::EPressed));
 	DrawTray();
 }
+
+
+bool GUIMyFrame1::isAnyTanHeld = false;
+bool GUIMyFrame1::QPressed = false;
+bool GUIMyFrame1::EPressed = false;
+int Tan::workspaceWidth = 721;
+int Tan::workspaceHeight = 577;
+
+

@@ -39,6 +39,7 @@ class GUIMyFrame1 : public MyFrame1
 		void buttonNewOnKeyDown( wxKeyEvent& event );
 		void buttonNewOnKeyUp( wxKeyEvent& event );
 		void buttonNewOnRightDown( wxMouseEvent& event );
+		void buttonSolveOnButtonClick(wxCommandEvent& event);
 		void panelTrayOnKeyDown( wxKeyEvent& event );
 		void panelTrayOnKeyUp( wxKeyEvent& event );
 		void panelTrayOnMouseEvents( wxMouseEvent& event );
@@ -57,7 +58,7 @@ class GUIMyFrame1 : public MyFrame1
 	wxPoint tileOffset = wxPoint(0, 0);
 	static bool QPressed, EPressed;
 	static bool isAnyTanHeld;
-
+	bool showSolution = false;
 
 	/**@brief Ustawia zasobnik
 	*
@@ -78,6 +79,7 @@ class GUIMyFrame1 : public MyFrame1
 	void DrawWorkspace();
 	void DrawImage();
 	void pickUp();
+
 
 
 

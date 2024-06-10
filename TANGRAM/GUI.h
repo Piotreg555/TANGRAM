@@ -37,6 +37,7 @@ class MyFrame1 : public wxFrame
 		wxPanel* panelImage;
 		wxButton* buttonClear;
 		wxButton* buttonNew;
+		wxButton* buttonSolve;
 		wxPanel* panelTray;
 
 		// Virtual event handlers, override them in your derived class
@@ -57,6 +58,7 @@ class MyFrame1 : public wxFrame
 		virtual void buttonNewOnKeyDown( wxKeyEvent& event ) { event.Skip(); }
 		virtual void buttonNewOnKeyUp( wxKeyEvent& event ) { event.Skip(); }
 		virtual void buttonNewOnRightDown( wxMouseEvent& event ) { event.Skip(); }
+		virtual void buttonSolveOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void panelTrayOnKeyDown( wxKeyEvent& event ) { event.Skip(); }
 		virtual void panelTrayOnKeyUp( wxKeyEvent& event ) { event.Skip(); }
 		virtual void panelTrayOnMouseEvents( wxMouseEvent& event ) { event.Skip(); }
@@ -66,7 +68,7 @@ class MyFrame1 : public wxFrame
 
 	public:
 
-		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("44 - TANGRAM"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1024,634 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("44 - TANGRAM"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1024,632 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~MyFrame1();
 
