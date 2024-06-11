@@ -102,16 +102,16 @@ void GUIMyFrame1::DrawTray()
 void cat(wxDC* dc, int height) {
 	int w = height;
 	int h = -height;
-	int scaleX = w / 3 *1.2;
-	int scaleY =h / 3 *1.2;
-	wxPoint offset = wxPoint(-w / 6, -1.8*h / 5);
+	int scaleX = w / 3 * 1.2;
+	int scaleY = h / 3 * 1.2;
+	wxPoint offset = wxPoint(-w / 6, -1.8 * h / 5);
 	wxPoint t1[3] = {
-		wxPoint(0, 0), 
-		wxPoint((sqrt(2)/2)* scaleX, 0),
+		wxPoint(0, 0),
+		wxPoint((sqrt(2) / 2) * scaleX, 0),
 		wxPoint((sqrt(2) / 2) * scaleX, (sqrt(2) / 2) * scaleY)
 	};
 	wxPoint t2[3] = {
-		wxPoint((sqrt(2)-1) / 2 * scaleX,(sqrt(2) - 1) / 2 * scaleY),
+		wxPoint((sqrt(2) - 1) / 2 * scaleX,(sqrt(2) - 1) / 2 * scaleY),
 		wxPoint(sqrt(2) / 2 * scaleX, sqrt(2) / 2 * scaleY),
 		wxPoint((sqrt(2) - 1) / 2 * scaleX, (sqrt(2) + 1) / 2 * scaleY)
 	};
@@ -121,10 +121,10 @@ void cat(wxDC* dc, int height) {
 		wxPoint((4 * sqrt(2) - 5) / 8 * scaleX, (4 * sqrt(2) + 7) / 8 * scaleY)
 	};
 	wxPoint t4[4] = {
-		wxPoint(sqrt(2)/2* scaleX,  0),
-		wxPoint(1.047*scaleX,  0.098*scaleY),
-		wxPoint(1.286*scaleX,0.538 *scaleY),
-		wxPoint(0.946*scaleX, 0.44 *scaleY)
+		wxPoint(sqrt(2) / 2 * scaleX,  0),
+		wxPoint(1.047 * scaleX,  0.098 * scaleY),
+		wxPoint(1.286 * scaleX,0.538 * scaleY),
+		wxPoint(0.946 * scaleX, 0.44 * scaleY)
 	};
 	wxPoint t5[3] = {
 		wxPoint((sqrt(2) - 1) / 2 * scaleX, 1. / 2 * scaleY),
@@ -158,34 +158,34 @@ void house(wxDC* dc, int height) {
 	int scaleY = h / 3 * 1.2;
 	wxPoint offset = wxPoint(-w / 6, -1.8 * h / 5);
 	wxPoint t1[3] = {
-		
+
 	};
 	wxPoint t2[3] = {
 		wxPoint(1. / 2 * scaleX, 0 * scaleY),
 		wxPoint(1 * scaleX, 1. / 2 * scaleY),
-		wxPoint(0 * scaleX, 1./2 * scaleY)
+		wxPoint(0 * scaleX, 1. / 2 * scaleY)
 	};
 	wxPoint t3[3] = {
 		wxPoint(0 * scaleX, 0 * scaleY),
 		wxPoint(1. / 4 * scaleX, 1. / 4 * scaleY),
-		wxPoint(0 * scaleX, 1./2 * scaleY)
+		wxPoint(0 * scaleX, 1. / 2 * scaleY)
 	};
 	wxPoint t4[4] = {
-		
+
 	};
 	wxPoint t5[3] = {
-		wxPoint(1./2 * scaleX, 0 * scaleY),
+		wxPoint(1. / 2 * scaleX, 0 * scaleY),
 		wxPoint(1 * scaleX, 0 * scaleY),
 		wxPoint(1 * scaleX, 1. / 2 * scaleY)
 	};
 	wxPoint t6[4] = {
-		
+
 	};
 	wxPoint t7[3] = {
 		wxPoint(0 * scaleX, 0 * scaleY),
-		wxPoint(1./2 * scaleX, 0 * scaleY),
-		wxPoint(1./4 * scaleX, 1./4 * scaleY)
-		
+		wxPoint(1. / 2 * scaleX, 0 * scaleY),
+		wxPoint(1. / 4 * scaleX, 1. / 4 * scaleY)
+
 	};
 	dc->DrawPolygon(3, t1, offset.x, offset.y);
 	dc->DrawPolygon(3, t2, offset.x, offset.y);
@@ -202,12 +202,12 @@ void GUIMyFrame1::DrawImage() {
 	dc.SetBackground(wxColor(255, 255, 255));
 	dc.SetPen((wxPen(wxColor(0, 0, 0))));
 	dc.Clear();
-	dc.SetDeviceOrigin(panelImage->GetSize().x / 2, panelImage->GetSize().y/2);
+	dc.SetDeviceOrigin(panelImage->GetSize().x / 2, panelImage->GetSize().y / 2);
 	//dc.DrawCircle(wxPoint(0,0), 5);
 
 	void (*shapes[2])(wxDC * dc, int height) = { cat, house };
 	std::srand((unsigned)time(NULL));
-	
+
 
 	if (showSolution) {
 		dc.SetBrush((wxBrush(wxColor(200, 200, 200))));
@@ -215,9 +215,9 @@ void GUIMyFrame1::DrawImage() {
 	}
 	else {
 		dc.SetBrush((wxBrush(wxColor(0, 0, 0))));
-		int x = random_number;
-		while(x==random_number) x = std::rand() % 2;
-		random_number = x;
+		int previous = random_number;
+		while (previous == random_number) previous = std::rand() % (sizeof(shapes) / sizeof(shapes[0]));
+		random_number = previous;
 		//dc.DrawText(std::to_string(random_number), wxPoint(0, 0));
 		shapes[random_number](&dc, panelImage->GetSize().y);
 	}
