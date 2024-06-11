@@ -1,5 +1,4 @@
 #include "GUIMyFrame1.h"
-#include <ctime>
 
 void GUIMyFrame1::setTray()
 {
@@ -152,6 +151,51 @@ void cat(wxDC* dc, int height) {
 	dc->DrawPolygon(3, t7, offset.x, offset.y);
 }
 
+void house(wxDC* dc, int height) {
+	int w = height;
+	int h = -height;
+	int scaleX = w / 3 * 1.2;
+	int scaleY = h / 3 * 1.2;
+	wxPoint offset = wxPoint(-w / 6, -1.8 * h / 5);
+	wxPoint t1[3] = {
+		
+	};
+	wxPoint t2[3] = {
+		wxPoint(1. / 2 * scaleX, 0 * scaleY),
+		wxPoint(1 * scaleX, 1. / 2 * scaleY),
+		wxPoint(0 * scaleX, 1./2 * scaleY)
+	};
+	wxPoint t3[3] = {
+		wxPoint(0 * scaleX, 0 * scaleY),
+		wxPoint(1. / 4 * scaleX, 1. / 4 * scaleY),
+		wxPoint(0 * scaleX, 1./2 * scaleY)
+	};
+	wxPoint t4[4] = {
+		
+	};
+	wxPoint t5[3] = {
+		wxPoint(1./2 * scaleX, 0 * scaleY),
+		wxPoint(1 * scaleX, 0 * scaleY),
+		wxPoint(1 * scaleX, 1. / 2 * scaleY)
+	};
+	wxPoint t6[4] = {
+		
+	};
+	wxPoint t7[3] = {
+		wxPoint(0 * scaleX, 0 * scaleY),
+		wxPoint(1./2 * scaleX, 0 * scaleY),
+		wxPoint(1./4 * scaleX, 1./4 * scaleY)
+		
+	};
+	dc->DrawPolygon(3, t1, offset.x, offset.y);
+	dc->DrawPolygon(3, t2, offset.x, offset.y);
+	dc->DrawPolygon(3, t3, offset.x, offset.y);
+	dc->DrawPolygon(4, t4, offset.x, offset.y);
+	dc->DrawPolygon(3, t5, offset.x, offset.y);
+	dc->DrawPolygon(4, t6, offset.x, offset.y);
+	dc->DrawPolygon(3, t7, offset.x, offset.y);
+}
+
 void GUIMyFrame1::DrawImage() {
 	wxClientDC dc1(panelImage);
 	wxBufferedDC dc(&dc1);
@@ -161,18 +205,20 @@ void GUIMyFrame1::DrawImage() {
 	dc.SetDeviceOrigin(panelImage->GetSize().x / 2, panelImage->GetSize().y/2);
 	//dc.DrawCircle(wxPoint(0,0), 5);
 
-	void (*shapes[1])(wxDC * dc, int height) = { cat };
-	int random_number=0;
+	void (*shapes[2])(wxDC * dc, int height) = { cat, house };
+	std::srand((unsigned)time(NULL));
+	
 
 	if (showSolution) {
 		dc.SetBrush((wxBrush(wxColor(200, 200, 200))));
-		shapes[random_number-1](&dc, panelImage->GetSize().y);
+		shapes[random_number](&dc, panelImage->GetSize().y);
 	}
 	else {
 		dc.SetBrush((wxBrush(wxColor(0, 0, 0))));
-		std::srand(std::time(0));
-		random_number = std::rand() % 1;// (sizeof(shapes) / sizeof(shapes[0]));
-		shapes[random_number-1](&dc, panelImage->GetSize().y);
+		int x = random_number;
+		while(x==random_number) x = std::rand() % 2;
+		random_number = x;
+		//dc.DrawText(std::to_string(random_number), wxPoint(0, 0));
+		shapes[random_number](&dc, panelImage->GetSize().y);
 	}
-	//cat(&dc, panelImage->GetSize().y);
 }

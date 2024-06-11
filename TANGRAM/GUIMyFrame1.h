@@ -59,6 +59,7 @@ class GUIMyFrame1 : public MyFrame1
 	static bool QPressed, EPressed;
 	static bool isAnyTanHeld;
 	bool showSolution = false;
+	int random_number = 0;
 
 	/**@brief Ustawia zasobnik
 	*
