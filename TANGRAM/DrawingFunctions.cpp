@@ -154,10 +154,13 @@ void cat(wxDC* dc, int height) {
 void house(wxDC* dc, int height) {
 	int w = height;
 	int h = -height;
-	int scaleX = w / 3 * 1.2;
-	int scaleY = h / 3 * 1.2;
-	wxPoint offset = wxPoint(-w / 6, -1.8 * h / 5);
+	int scaleX = w / 3 * 1.5;
+	int scaleY = h / 3 * 1.5;
+	wxPoint offset = wxPoint(-w / 5, -1.4 * h / 5);
 	wxPoint t1[3] = {
+		wxPoint((sqrt(2)+8)/8 * scaleX, 1./2 * scaleY),
+		wxPoint((sqrt(2)) / 8 * scaleX, 1. / 2 * scaleY),
+		wxPoint((sqrt(2) + 4) / 8 * scaleX, 1 * scaleY)
 
 	};
 	wxPoint t2[3] = {
@@ -171,6 +174,11 @@ void house(wxDC* dc, int height) {
 		wxPoint(0 * scaleX, 1. / 2 * scaleY)
 	};
 	wxPoint t4[4] = {
+		wxPoint((sqrt(2))/8 * scaleX, 1./2 * scaleY),
+		wxPoint((3*sqrt(2)) / 8 * scaleX, (sqrt(2)+2)/4 * scaleY),
+		wxPoint((sqrt(2) ) / 8 * scaleX, (sqrt(2)+2)/4 * scaleY),
+		wxPoint(( - sqrt(2)) / 8 * scaleX, 1. / 2 * scaleY)
+
 
 	};
 	wxPoint t5[3] = {
@@ -179,6 +187,11 @@ void house(wxDC* dc, int height) {
 		wxPoint(1 * scaleX, 1. / 2 * scaleY)
 	};
 	wxPoint t6[4] = {
+		wxPoint((3 * sqrt(2)) / 8 * scaleX, (sqrt(2) + 2) / 4 * scaleY),
+		wxPoint((sqrt(2)) / 8 * scaleX, (sqrt(2) + 2) / 4 * scaleY),
+		wxPoint((sqrt(2)) / 8 * scaleX, (2 * sqrt(2) + 2) / 4 * scaleY),
+		wxPoint((3 * sqrt(2)) / 8 * scaleX, (2*sqrt(2) + 2) / 4 * scaleY)
+		
 
 	};
 	wxPoint t7[3] = {
