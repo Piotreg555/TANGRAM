@@ -12,7 +12,7 @@ GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 
 void GUIMyFrame1::MyFrame1OnUpdateUI(wxUpdateUIEvent& event)
 {
-	
+
 
 }
 
@@ -172,8 +172,11 @@ void GUIMyFrame1::buttonNewOnKeyUp(wxKeyEvent& event)
 		GUIMyFrame1::QPressed = false;
 }
 void GUIMyFrame1::buttonSolveOnButtonClick(wxCommandEvent& event) {
-	showSolution = true;
-	DrawImage();
+	if (random_number != -1)
+	{
+		showSolution = true;
+		DrawImage();
+	}
 }
 
 void GUIMyFrame1::buttonNewOnRightDown(wxMouseEvent& event)

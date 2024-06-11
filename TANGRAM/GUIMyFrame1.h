@@ -55,11 +55,10 @@ class GUIMyFrame1 : public MyFrame1
 	wxPoint MousePositionInWorkspace;
 	bool MouseClickedInWorkspace;
 	bool MouseClickedInTray;
-	wxPoint tileOffset = wxPoint(0, 0);
 	static bool QPressed, EPressed;
 	static bool isAnyTanHeld;
 	bool showSolution = false;
-	int random_number = 0;
+	int random_number = -1;
 
 	/**@brief Ustawia zasobnik
 	*
