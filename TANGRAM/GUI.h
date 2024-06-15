@@ -41,6 +41,8 @@ protected:
 	wxPanel* panelTray;
 
 	// Virtual event handlers, override them in your derived class
+	virtual void MyFrame1OnKeyDown(wxKeyEvent& event) { event.Skip(); }
+	virtual void MyFrame1OnKeyUp(wxKeyEvent& event) { event.Skip(); }
 	virtual void MyFrame1OnUpdateUI(wxUpdateUIEvent& event) { event.Skip(); }
 	virtual void panelWorkspaceOnKeyDown(wxKeyEvent& event) { event.Skip(); }
 	virtual void panelWorkspaceOnKeyUp(wxKeyEvent& event) { event.Skip(); }

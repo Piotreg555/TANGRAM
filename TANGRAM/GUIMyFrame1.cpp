@@ -10,10 +10,24 @@ GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 	}
 }
 
+void GUIMyFrame1::MyFrame1OnKeyDown(wxKeyEvent& event)
+{
+	if (event.GetKeyCode() == 69)
+		GUIMyFrame1::EPressed = true;
+	if (event.GetKeyCode() == 81)
+		GUIMyFrame1::QPressed = true;
+}
+
+void GUIMyFrame1::MyFrame1OnKeyUp(wxKeyEvent& event)
+{
+	if (event.GetKeyCode() == 69)
+		GUIMyFrame1::EPressed = false;
+	if (event.GetKeyCode() == 81)
+		GUIMyFrame1::QPressed = false;
+}
+
 void GUIMyFrame1::MyFrame1OnUpdateUI(wxUpdateUIEvent& event)
 {
-
-
 }
 
 void GUIMyFrame1::panelWorkspaceOnKeyDown(wxKeyEvent& event)

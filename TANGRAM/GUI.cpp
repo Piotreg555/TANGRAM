@@ -77,6 +77,8 @@ MyFrame1::MyFrame1(wxWindow* parent, wxWindowID id, const wxString& title, const
 	this->Centre(wxBOTH);
 
 	// Connect Events
+	this->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(MyFrame1::MyFrame1OnKeyDown));
+	this->Connect(wxEVT_KEY_UP, wxKeyEventHandler(MyFrame1::MyFrame1OnKeyUp));
 	this->Connect(wxEVT_UPDATE_UI, wxUpdateUIEventHandler(MyFrame1::MyFrame1OnUpdateUI));
 	panelWorkspace->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(MyFrame1::panelWorkspaceOnKeyDown), NULL, this);
 	panelWorkspace->Connect(wxEVT_KEY_UP, wxKeyEventHandler(MyFrame1::panelWorkspaceOnKeyUp), NULL, this);
@@ -143,6 +145,8 @@ MyFrame1::MyFrame1(wxWindow* parent, wxWindowID id, const wxString& title, const
 MyFrame1::~MyFrame1()
 {
 	// Disconnect Events
+	this->Disconnect(wxEVT_KEY_DOWN, wxKeyEventHandler(MyFrame1::MyFrame1OnKeyDown));
+	this->Disconnect(wxEVT_KEY_UP, wxKeyEventHandler(MyFrame1::MyFrame1OnKeyUp));
 	this->Disconnect(wxEVT_UPDATE_UI, wxUpdateUIEventHandler(MyFrame1::MyFrame1OnUpdateUI));
 	panelWorkspace->Disconnect(wxEVT_KEY_DOWN, wxKeyEventHandler(MyFrame1::panelWorkspaceOnKeyDown), NULL, this);
 	panelWorkspace->Disconnect(wxEVT_KEY_UP, wxKeyEventHandler(MyFrame1::panelWorkspaceOnKeyUp), NULL, this);

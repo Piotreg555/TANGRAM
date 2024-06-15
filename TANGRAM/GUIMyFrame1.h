@@ -22,6 +22,8 @@ class GUIMyFrame1 : public MyFrame1
 {
 protected:
 	// Handlers for MyFrame1 events.
+	void MyFrame1OnKeyDown(wxKeyEvent& event);
+	void MyFrame1OnKeyUp(wxKeyEvent& event);
 	void MyFrame1OnUpdateUI(wxUpdateUIEvent& event);
 	void panelWorkspaceOnKeyDown(wxKeyEvent& event);
 	void panelWorkspaceOnKeyUp(wxKeyEvent& event);
@@ -81,45 +83,6 @@ public:
 	void DrawWorkspace();
 	void DrawImage();
 	void pickUp();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 };
 
